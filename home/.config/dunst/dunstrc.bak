@@ -1,0 +1,97 @@
+[global]
+    monitor = 0
+    geometry = "700x0+1000-1061"
+    indicate_hidden = true
+    shrink = no
+    separator_height = 0
+    padding = 0
+    horizontal_padding = 20
+    frame_width = 2
+    sort = yes
+    idle_threshold = 120
+    font = DejaVuSansMono:pixelsize 8
+    line_height = 4
+    markup = full
+    alignment = right
+    show_age_threshold = 30
+    word_wrap = false
+    ignore_newline = yes
+    stack_duplicates = true
+    hide_duplicate_count = false
+    startup_notification = false
+    show_indicators = yes
+    icon_position = off
+    max_icon_size = 12
+    icon_path = ~/.config/dunst/normal.png
+    sticky_history = no
+    history_length = 20
+    browser = /usr/bin/qutebrowser -new-tab
+    always_run_script = true
+    verbosity = mesg
+    transparency = yes
+    radius = 6
+
+    mouse_left_click = do_action & close_current
+    mouse_middle_click = close_all
+    title = Dunst
+    class = Dunst
+
+
+    progress_bar = true
+    
+    # Set the progress bar height. This includes the frame, so make sure
+    # it's at least twice as big as the frame width.
+    progress_bar_height = 10
+
+    # Set the frame width of the progress bar
+    progress_bar_frame_width = 1
+
+    # Set the minimum width for the progress bar
+    progress_bar_min_width = 150
+
+    # Set the maximum width for the progress bar
+    progress_bar_max_width = 300
+
+      # The forma t of the message.  Possible variables are:
+    #   %a  appname
+    #   %s  summary
+    #   %b  body
+    #   %i  iconname (including its path)
+    #   %I  iconname (without its path)
+    #   %p  progress value if set ([  0%] to [100%]) or nothing
+    #   %n  progress value if set without any extra characters
+    #   %%  Literal %
+    # Markup is allowed
+
+    format = "%s %b!"
+    # no notifs 🔕🔔
+    # andromeda 
+
+[stack_all]
+    set_stack_tag = "tag"
+
+[shortcuts]
+    close = Escape
+    history = ctrl+grave
+    context = ctrl+shift+period
+
+[urgency_low]
+    timeout = 1
+    background = "#9c292a"
+    foreground = "#A18C8B"
+    frame_color = "#9c292a"
+    icon = ~/.config/dunst/normal.png 
+
+[urgency_normal]
+    timeout = 8
+    background = "#191C28"
+    foreground = "#e9d9d3"
+    frame_color = "#191C28"
+    icon = ~/.config/dunst/normal.png 
+
+[urgency_critical]
+    timeout = 0
+    background = "#191C28"
+    foreground = "#9c292a"
+    frame_color = "#191C28"
+    icon = ⚠️

@@ -1,0 +1,53 @@
+@import "colors.rasi"
+
+* {
+    background-color:       @bg-alt;
+    text-color:             @foreground;
+    font:                   "DejaVu Sans Mono 10";
+}
+
+
+window {
+    /*anchor:               north;*/
+    location:               north west;
+    width:                  85.3%;
+    height:                 27px;
+    padding:                0;
+    children:               [ horibox ];
+    border-radius:          12px;
+    border:                 4px 20px;
+    border-color:           @background;
+}
+
+horibox {
+    orientation: horizontal;
+    children:   [ /*prompt, */entry, listview ];
+
+}
+/*add this to "children" if you want to see what is running i.e calc file-browser etc*/
+/*prompt,*/
+
+listview {
+    layout:             horizontal;
+    spacing:            12px;
+    padding:            1px;
+    lines:              250;
+}
+
+entry {
+    text-color:         @foreground;
+    padding:            2px 18px;
+    expand:             false;
+    width:              10em;
+}
+
+element {
+    padding:            0px 8px 0px 8px;
+    
+}
+element selected {
+    padding:            4px 4px;
+    text-color:         @background;
+    background-color:   @foreground;
+    border-radius:      12px;
+}

@@ -1,0 +1,1157 @@
+
+;=============================================================;
+;                                                             ;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗    ;
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗   ;
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝   ;
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗   ;
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║   ;
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝   ;
+;                                                             ;
+;=============================================================;
+
+;------------------------------------------------;
+;                                                ;
+;                LETS HAVE KIDDOS			 	 ;
+;                                                ;
+;------------------------------------------------;
+		
+
+;------------------------------------------------;
+;                                                ;
+;                     COLOR                      ;
+;                                                ;
+;------------------------------------------------;
+
+[color]
+
+background = 		#2B303B
+background-alt = 	#4a5266
+
+foreground = 		#C0C5CE
+foreground-alt = 	#65737E
+
+red = 				#BF616A
+green = 			#99C794
+yellow = 			#EBCB8B
+blue = 				#8FA1B3
+magenta = 			#D08770
+cyan = 				#96B5B4
+gray = 				#757a84
+black = 			#14171b
+
+;------------------------------------------------;
+
+
+
+;------------------------------------------------;
+;                                                ;
+;               	BAR/MAIN 	    	         ;
+;                                                ;
+;------------------------------------------------;
+
+[bar/main]
+monitor = ${env:MONITOR:DP-2}
+width = "100%"
+height = "20"
+offset-x = "0"
+offset-y = "0"
+radius = "0"
+radius-top = "0"
+radius-bottom = "0"
+
+background = "${color.background}"
+foreground = "${color.foreground}"
+
+## hey dummy this is probably what youre looking for
+padding-left = 0px
+padding-right = 0px
+
+module-margin-left =
+module-margin-right =
+
+# Look I know this is a mess but I'm too lazy to fix this. I use diff fonts for diff symbols. 
+
+font-0 = "DejaVu Sans Mono:pixelsize=9;3"
+font-1 = "Iosevka Nerd Font:pixelsize=11;2"
+font-2 = "siji:pixelsize=9;3"
+font-3 = "feather:pixelsize=10;2"
+font-4 = "weather-icons:pixelsize=9;2"
+font-5 = "NotoEmoji:pixelsize=10;2"
+font-6 = "Iosevka Nerd Font:pixelsize=13;3"
+font-7 = "Iosevka Nerd Font:size=12;3"
+
+modules-left = launcher right-bga
+modules-center = left-fg i3 right-fg
+modules-right = left-bga sensormenuopen right-bga sep sep left-fg alsa right-fg sep sep left-fg date right-fg sep sep left-bga powermenu
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+line-size = 3
+line-color = ${color.red}
+
+border-top-size = 4
+border-bottom-size = 4
+border-color = ${color.background}
+
+wm-restack = i3
+enable-ipc = true
+override-redirect = false
+
+;------------------------------------------------;
+
+
+
+;------------------------------------------------;
+;                                                ;
+;               	BAR/SENSORS 	    	     ;
+;                                                ;
+;------------------------------------------------;
+
+
+[bar/sensors]
+monitor = ${env:MONITOR:DP-2}
+width = "430px"
+height = "20"
+offset-x = "1161"
+offset-y = "0"
+radius = "0"
+radius-top = "0"
+radius-bottom = "0"
+
+background = "${color.background}"
+foreground = "${color.foreground}"
+
+## hey dummy this is probably what youre looking for
+padding-left = 0px
+padding-right = 0px
+
+module-margin-left = 
+module-margin-right =
+
+font-0 = "DejaVuSansMono:pixelsize=9;2"
+font-1 = "Iosevka Nerd Font:pixelsize=11;2"
+font-2 = "siji:pixelsize=9;3"
+font-3 = "feather:pixelsize=10;2"
+font-4 = "weather-icons:pixelsize=9;2"
+font-5 = "NotoEmoji:pixelsize=10;2"
+font-6 = "Iosevka Nerd Font:pixelsize=13;3"
+font-7 = "Iosevka Nerd Font Mono:size=12;3"
+
+modules-center = left-bga cpu temperaturecpu gpu temperaturegpu memory network sensormenuclose right-bga
+
+override-redirect = true
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+under-line-size = 1
+under-line-color = ${color.black}
+
+border-top-size = 4
+border-bottom-size = 4
+border-color = ${color.background}
+
+enable-ipc = true
+ 
+;------------------------------------------------;
+
+
+
+;-----------------------------------------------;
+;                                               ;
+;             		SEPARATORS  	            ;
+;                                               ;
+;-----------------------------------------------;
+
+[module/left-glyph]
+type = custom/text
+content = ""
+content-background= ${color.background}
+content-foreground=	${color.foreground}
+content-font = 8
+
+[module/right-glyph]
+type = custom/text
+content = ""
+content-background= ${color.background}
+content-foreground=	${color.foreground}
+content-font = 8
+
+[module/left-bga]
+inherit = module/left-glyph
+content-foreground = ${color.background-alt}
+content-font = 8
+
+[module/right-bga]
+inherit = module/right-glyph
+content-foreground = ${color.background-alt}
+content-font = 8
+
+[module/left-fg]
+inherit = module/left-glyph
+content-background  = ${color.background}
+content-foreground=	${color.foreground}
+content-font = 8
+
+[module/right-fg]
+inherit = module/right-glyph
+content-background  = ${color.background}
+content-foreground=	${color.foreground}
+content-font = 8
+
+[module/left-fga]
+inherit = module/left-glyph
+content-foreground = ${module/" INSERT MODULE HERE".label-foreground}
+
+[module/right-dfa]
+inherit = module/right-glyph
+content-foreground = ${module/" INSERT MODULE HERE".label-foreground}
+
+[module/sep]
+type = custom/text
+content = "  "
+
+
+
+;------------------------------------------------;
+
+
+
+;-----------------------------------------------;
+;                                               ;
+;         System Mount Removable Devices        ;
+;                                               ;
+;-----------------------------------------------;
+
+[module/system-usb-mount]
+type = custom/script
+exec = ~/.config/polybar/scripts/system-usb-mount.sh
+interval = 5
+click-left = ~/.config/polybar/scripts/system-usb-mount.sh --mount &
+click-right = ~/.config/polybar/scripts/system-usb-mount.sh --unmount &
+
+;------------------------------------------------;
+
+
+
+;------------------------------------------------;
+;                                                ;
+;               	UPDATES 	    	         ;
+;                                                ;
+;------------------------------------------------;
+
+[module/updates-pacman-aurhelper]
+type = custom/script
+exec = ~/.config/polybar/scripts/updates-pacman-aurhelper.sh
+interval = 600
+
+content-foreground = ${color.foreground}
+content-background = ${color.background-alt}
+
+;------------------------------------------------;
+
+
+;------------------------------------------------;
+;                                                ;
+;               	i3-GAPS 	    	         ;
+;                                                ;
+;------------------------------------------------;
+
+# [module/i3]
+# type = internal/i3
+
+# index-sort = true
+# wrapping-scroll = false
+# pin-workspaces = false
+# reverse-scroll = false
+# ws-num = 8; 
+# show-all = true;
+
+# ws-icon-0 = 1;1
+# ws-icon-1 = 2;2
+# ws-icon-2 = 3;3
+# ws-icon-3 = 4;4
+# ws-icon-4 = 5;5
+# ws-icon-5 = 6;6
+# ws-icon-6 = 7;7
+# ws-icon-7 = 8;8
+
+# format = <label-state> <label-mode>
+
+# label-mode-padding = 1 # spacing between icons
+# label-mode-foreground = ${color.black}
+# label-mode-background = ${color.black}
+# label-mode-font = 0;
+
+# label-focused =%icon%
+# label-focused-foreground = ${color.blue}
+# label-focused-background = ${color.foreground}
+# label-focused-padding = 1 # spacing between icons
+# label-focused-font = 0;
+
+# label-unfocused =%icon%
+# label-unfocused-padding = 1 # spacing between icons
+# label-unfocused-foreground = ${color.foreground-alt}
+# label-unfocused-background = ${color.foreground}
+# label-unfocused-font = 0;
+
+# label-visible =%icon%
+# label-visible-padding = ${self.label-focused-padding}
+# label-visible-foreground = ${color.background-alt}
+# label-visible-background = ${color.foreground}
+# label-visible-font = 0;
+
+# label-urgent =%icon%
+# label-urgent-foreground = ${color.red}
+# label-urgent-background = ${color.foreground}
+# label-urgent-padding = 1 # spacing between icons
+# label-urgent-font = 0;
+
+;------------------------------------------------;
+
+
+
+[module/i3]
+type = internal/i3
+
+index-sort = true
+wrapping-scroll = false
+pin-workspaces = false
+reverse-scroll = false
+ws-num = 8; 
+show-all = true;
+
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+
+format = <label-state> <label-mode>
+
+label-mode-padding = 1 # spacing between icons
+label-mode-foreground = ${color.black}
+label-mode-background = ${color.black}
+label-mode-font = 7;
+
+label-focused =""
+label-focused-foreground = ${color.blue}
+label-focused-background = ${color.foreground}
+label-focused-padding = 1 # spacing between icons
+label-focused-font = 7;
+
+label-unfocused =%icon%
+label-unfocused-padding = 1 # spacing between icons
+label-unfocused-foreground = ${color.foreground-alt}
+label-unfocused-background = ${color.foreground}
+label-unfocused-font = 7;
+
+label-visible =""
+label-visible-padding = ${self.label-focused-padding}
+label-visible-foreground = ${color.background-alt}
+label-visible-background = ${color.foreground}
+label-visible-font = 7;
+
+label-urgent =%icon%
+label-urgent-foreground = ${color.red}
+label-urgent-background = ${color.foreground}
+label-urgent-padding = 1 # spacing between icons
+label-urgent-font = 7;
+
+;------------------------------------------------;
+
+
+
+;------------------------------------------------;
+;                                                ;
+;               	 MEMORY			    	     ;
+;                                                ;
+;------------------------------------------------;
+
+[module/memory]
+type = internal/memory
+
+interval = 5
+
+format = <label>
+format-background = ${color.background-alt}
+format-foreground = ${color.foreground}
+
+label = "RAM %percentage_used%%"
+
+;------------------------------------------------;
+
+
+
+;------------------------------------------------;
+;                                                ;
+;               	CPU   	         			 ;
+;                                                ;
+;------------------------------------------------;
+
+[module/cpu]
+type = internal/cpu
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 5
+
+; Available tags:
+;   <label> (default)
+;   <bar-load>
+;   <ramp-load>
+;   <ramp-coreload>
+;;format = <label> <ramp-coreload>
+format = <label>
+# ﬙ 
+format-prefix =CPU
+format-background = ${color.background-alt}
+format-foreground = ${color.foreground}
+format-padding = 1
+
+label = " %percentage%%"
+
+; Spacing between individual per-core ramps
+;;ramp-coreload-spacing = 1
+;;ramp-coreload-0 = ${cpu.load0}
+;;ramp-coreload-1 = ${cpu.load1}
+
+;;ramp-load-0 = ${cpu.load0}
+;;ramp-load-1 = ${cpu.load1}
+
+;------------------------------------------------;
+
+
+
+;------------------------------------------------;
+;                                                ;
+;               	CPU TEMP 	    	         ;
+;                                                ;
+;------------------------------------------------;
+
+[module/temperaturecpu]
+type = internal/temperature
+
+interval = 5
+
+thermal-zone = 0
+
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon2/temp1_input
+
+warn-temperature = 65
+
+units = true
+
+format = <ramp> <label>
+format-background = ${color.background-alt}
+format-foreground = ${color.foreground}
+format-padding = 1
+
+format-warn = <ramp> <label-warn>
+format-warn-background = ${color.background-alt}
+format-warn-foreground = ${color.red}
+format-warn-padding = 1
+
+label = "%temperature-c% "
+label-warn = "%temperature-c% "
+label-warn-foreground = ${color.red}
+
+#  
+#  
+#  
+#  
+#  
+
+ramp-0 ="CPU"
+ramp-1 ="CPU"
+ramp-2 ="CPU"
+ramp-3 ="CPU"
+ramp-4 ="CPU"
+
+ramp-0-foreground = {color.blue}
+ramp-1-foreground = {color.green}
+ramp-2-foreground = {color.yellow}
+ramp-3-foreground = {color.magenta}
+ramp-4-foreground = {color.red}
+
+;------------------------------------------------;
+
+
+
+;------------------------------------------------;
+;                                                ;
+;               	   GPU  	    	         ;
+;                                                ;
+;------------------------------------------------;
+
+[module/gpu]
+type = custom/script
+exec = ~/.config/rofi/scripts/gpu.sh
+format-foreground = ${color.foreground}
+format-background = ${color.background-alt}
+interval = 5
+
+;------------------------------------------------;
+
+
+;------------------------------------------------;
+;                                                ;
+;               	GPU TEMP 	    	         ;
+;                                                ;
+;------------------------------------------------;
+
+[module/temperaturegpu]
+type = internal/temperature
+
+interval = 5
+
+thermal-zone = 0
+
+hwmon-path = /sys/devices/virtual/thermal/thermal_zone0/hwmon1/temp1_input
+
+warn-temperature = 65
+
+units = true
+
+format = <ramp> <label>
+format-background = ${color.background-alt}
+format-foreground = ${color.foreground}
+format-padding = 2
+
+format-warn = <ramp> <label-warn>
+format-warn-background = ${color.background-alt}
+format-warn-foreground = ${color.foreground}
+format-warn-padding = 2
+
+label = %temperature-c%
+
+label-warn = "%temperature-c%"
+label-warn-foreground = ${color.red}
+
+ramp-0 = GPU
+ramp-1 = GPU
+ramp-2 = GPU
+ramp-3 = GPU
+ramp-4 = GPU
+
+#  
+#  
+#  
+#  
+#  
+
+;------------------------------------------------;
+
+
+;------------------------------------------------;
+;                                                ;
+;                   FILE SYSTEM 	    	     ;
+;                                                ;
+;------------------------------------------------;
+
+[module/filesystem]
+type = internal/fs
+
+; Mountpoints to display
+mount-0 = /
+mount-1 = /home
+
+; Seconds to sleep between updates
+; Default: 30
+interval = 5
+
+; Display fixed precision values
+; Default: false
+fixed-values = true
+
+; Spacing between entries
+; Default: 2
+;;spacing = 4
+
+; Available tags:
+;   <label-mounted> (default)
+;   <bar-free>
+;   <bar-used>
+;   <ramp-capacity>
+format-mounted = <label-mounted>
+format-mounted-prefix = 
+format-mounted-background = ${color.background}
+format-mounted-foreground = ${color.background-alt}
+format-mounted-overline = ${color.background}
+format-mounted-underline = ${color.background}
+format-mounted-padding = 2
+
+#  
+; Available tags:
+;   <label-unmounted> (default)
+format-unmounted = <label-unmounted>
+format-unmounted-prefix = 
+format-unmounted-background = ${color.background}
+format-unmounted-foreground = ${color.foreground}
+format-unmounted-overline = ${color.background}
+format-unmounted-underline = ${color.background}
+format-unmounted-padding = 2
+
+; Available tokens:
+;   %mountpoint%
+;   %type%
+;   %fsname%
+;   %percentage_free%
+;   %percentage_used%
+;   %total%
+;   %free%
+;   %used%
+; Default: %mountpoint% %percentage_free%%
+label-mounted = "  %free%"
+
+; Available tokens:
+;   %mountpoint%
+; Default: %mountpoint% is not mounted
+label-unmounted = " %mountpoint%: not mounted"
+
+;------------------------------------------------;-
+
+
+
+;------------------------------------------------;
+;                                                ;
+;               	  DATE    	                 ;
+;                                                ;
+;------------------------------------------------;
+
+[module/date]
+type = internal/date
+
+; Seconds to sleep between updates
+interval = 5
+
+; See "http://en.cppreference.com/w/cpp/io/manip/put_time" for details on how to format the date string
+; NOTE: if you want to use syntax tags here you need to use %%{...}
+;;date =" %Y-%m-%d% "
+
+; Optional time format
+time = "  %I:%M %p "
+
+; if `date-alt` or `time-alt` is defined, clicking
+; the module will toggle between formats
+;;date-alt =%A, %d %B %Y " ;;"
+time-alt ="%b-%d-%Y"
+
+#date-alt = ~/.config/rofi/scripts/openweathermap-detailed.sh
+
+; Available tags:
+;   <label> (default)
+format = <label>
+format-background = ${color.foreground}
+format-foreground = ${color.background-alt}
+format-padding = 1
+
+; Available tokens:
+;   %date%
+;   %time%
+;	%weather%
+; Default: %date%
+label = %time%
+
+click-left = killall dunst &
+
+;------------------------------------------------;
+
+
+
+;------------------------------------------------;
+;                                                ;
+;       		SENSOR MENU MOCKUP    	         ;
+;                                                ;
+;------------------------------------------------;
+
+# Imagine my surprise when I found out you can't echo information out to each label
+# This wasn't meant to be just a mockup but here we are.
+
+[module/sensormenumockup]
+type = custom/menu
+
+expand-right = false
+
+label-open = ""
+label-open-background = ${color.background-alt}
+label-open-foreground = ${color.foreground}
+label-close = ""
+label-close-background = ${color.background-alt}
+label-close-foreground = ${color.foreground}
+label-separator = "  "
+label-separator-background = ${color.background-alt}
+label-separator-foreground = ${color.foreground}
+
+menu-0-0-background = ${color.background-alt}
+menu-0-0-foreground = ${color.red}
+menu-0-1-background = ${color.background-alt}
+menu-0-1-foreground = ${color.yellow}
+menu-0-2-background = ${color.background-alt}
+menu-0-2-foreground = ${color.blue}
+menu-0-3-background = ${color.background-alt}
+menu-0-3-foreground = ${color.green}
+menu-0-4-background = ${color.background-alt}
+menu-0-4-foreground = ${color.magenta}
+menu-0-5-foreground = ${color.yellow}
+menu-0-5-background = ${color.background-alt}
+menu-0-6-foreground = ${color.green}
+menu-0-6-background = ${color.background-alt}
+menu-0-7-foreground = ${color.blue}
+menu-0-7-background = ${color.background-alt}
+
+menu-0-0-exec = ~/.config/polybar/scripts/
+menu-0-1 = "CPU 32C "
+menu-0-1-exec = 
+menu-0-2 = "GPU 2%"
+menu-0-2-exec = 
+menu-0-3 = "GPU 19%"
+menu-0-3-exec = 
+menu-0-4 = "RAM 7%"
+menu-0-4-exec =
+menu-0-5 = "WILSON"
+menu-0-5-exec = 
+menu-0-6 = "FULL BAT"
+menu-0-6-exec = ~/.config/polybar/scripts/battery.sh
+menu-0-7 = "BACKLIGHT"
+menu-0-7-exec = 
+
+;------------------------------------------------;
+
+
+
+;------------------------------------------------;
+;                                                ;
+;               	SENSOR MENU 			     ;
+;                                                ;
+;------------------------------------------------;
+
+[module/sensormenuclose]
+type = custom/text
+content = "  " 
+content-foreground = ${color.foreground}
+content-background = ${color.background-alt}
+click-left = pkill -9 -e -f "polybar sensors" &
+
+;------------------------------------------------;
+
+
+
+
+[module/sensormenuopen]
+type = custom/text
+content = "  "
+content-foreground = ${color.foreground}
+content-background = ${color.background-alt}
+click-left = polybar sensors; ~/.config/rofi/scripts/uptime.sh & exec sleep 5s; pkill -9 -e -f "polybar sensors";
+shift-click-left = polybar sensors; ~/.config/rofi/scripts/uptime.sh &
+click-right = ~/.config/rofi/scripts/weather.sh &
+click-middle = ~/.config/rofi/scripts/uptime.sh &
+
+;------------------------------------------------;
+
+
+
+;------------------------------------------------;
+;                                                ;
+;               	LAUNCHER 	    	         ;
+;                                                ;
+;------------------------------------------------;
+
+[module/launcher]
+type = custom/text
+content = ""
+content-font = 7;
+content-foreground = ${color.foreground}
+click-left = rofi -no-config -no-lazy-grab -show drun -modi drun -show-icons -theme ~/.config/rofi/launcher.rasi; exec killall dunst
+
+# alt emojis     ≡      ⓞ   ﴂ
+
+;------------------------------------------------;-
+
+
+;------------------------------------------------;
+;                                                ;
+;               	 POWER MENU    	             ;
+;                                                ;
+;------------------------------------------------;
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = false
+
+label-open = "     "
+label-exec = pkill -9 -e -f "polybar sensors" &
+label-open-background = ${color.background-alt}
+label-open-foreground = ${color.red}
+label-close = "     "
+label-close-background = ${color.background-alt}
+label-close-foreground = ${color.foreground}
+label-separator = "  "
+label-separator-background = ${color.background-alt}
+label-separator-foreground = ${color.foreground}
+
+# Serious & monochromatic
+
+menu-0-0-background = ${color.background-alt}
+menu-0-0-foreground = ${color.foreground}
+menu-0-1-background = ${color.background-alt}
+menu-0-1-foreground = ${color.foreground}
+menu-0-2-background = ${color.background-alt}
+menu-0-2-foreground = ${color.foreground}
+menu-0-3-background = ${color.background-alt}
+menu-0-3-foreground = ${color.foreground}
+menu-0-4-background = ${color.background-alt}
+menu-0-4-foreground = ${color.foreground}
+
+# Playful & polychromatic
+
+# menu-0-0-background = ${color.background-alt}
+# menu-0-0-foreground = ${color.red}
+# menu-0-1-background = ${color.background-alt}
+# menu-0-1-foreground = ${color.yellow}
+# menu-0-2-background = ${color.background-alt}
+# menu-0-2-foreground = ${color.blue}
+# menu-0-3-background = ${color.background-alt}
+# menu-0-3-foreground = ${color.green}
+# menu-0-4-background = ${color.background-alt}
+# menu-0-4-foreground = ${color.magenta}
+
+menu-0-0 = "  Shutdown"
+menu-0-0-exec = amixer set Master mute & systemctl poweroff &
+menu-0-1 = "  Reboot"
+menu-0-1-exec = amixer set Master mute & systemctl reboot &
+menu-0-2 = "  Logout"
+menu-0-2-exec = amixer set Master mute & systemctl logout &
+menu-0-3 = "  Sleep "
+menu-0-3-exec = amixer set Master mute & systemctl suspend &
+menu-0-4 = " Lock "
+menu-0-4-exec = ~/.config/rofi/scripts/i3lock.sh &
+
+
+;------------------------------------------------;-
+
+
+
+;------------------------------------------------;
+;                                                ;
+;               	ALSA AUDIO			         ;
+;                                                ;
+;------------------------------------------------;
+
+[module/alsa]
+type = internal/alsa
+
+; Soundcard to be used
+; Usually in the format hw:# where # is the card number
+; You can find the different card numbers in `/proc/asound/cards`
+master-soundcard = default
+speaker-soundcard = default
+headphone-soundcard = default
+
+; Name of the master, speaker and headphone mixers
+; Use the following command to list available mixer controls:
+; $ amixer scontrols | sed -nr "s/.*'([[:alnum:]]+)'.*/\1/p"
+; If master, speaker or headphone-soundcard isnt the default, 
+; use `amixer -c # scontrols` instead where # is the number 
+; of the master, speaker or headphone soundcard respectively
+;
+; Default: Master
+master-mixer = Master
+
+; Optionally define speaker and headphone mixers
+; Default: none
+;;speaker-mixer = Speaker
+; Default: none
+;;headphone-mixer = Headphone
+
+; NOTE: This is required if headphone_mixer is defined
+; Use the following command to list available device controls
+; $ amixer controls | sed -r "/CARD/\!d; s/.*=([0-9]+).*name='([^']+)'.*/printf '%3.0f: %s\n' '\1' '\2'/e" | sort
+; You may also need to use `amixer -c # controls` as above for the mixer names
+; Default: none
+;;headphone-id = 9
+
+; Use volume mapping (similar to amixer -M and pulseaudiomixer), where the increase in volume is linear to the ear
+; Default: false
+;;mapped = true
+
+; Interval for volume increase/decrease (in percent points)
+; Default: 5
+interval = 5
+
+; Available tags:
+;   <label-volume> (default)
+;   <ramp-volume>
+;   <bar-volume>
+format-volume = <ramp-volume> <label-volume>
+format-volume-background = ${color.foreground}
+format-volume-foreground= ${color.background-alt}
+format-volume-padding = 1
+
+format-muted = <label-muted>
+format-muted-prefix =""
+format-muted-background = ${color.foreground}
+format-muted-padding = 1
+ 
+format-muted-foreground = ${color.foreground} 
+
+
+
+label-volume =" %percentage%%"
+
+label-muted = "Muted"
+label-muted-foreground = ${color.background-alt}
+
+; Only applies if <ramp-volume> is used
+ramp-volume-0 =""
+ramp-volume-1 =""
+ramp-volume-2 =""
+
+#   
+
+; If defined, it will replace <ramp-volume> when
+; headphones are plugged in to `headphone_control_numid`
+; If undefined, <ramp-volume> will be used for both
+; Only applies if <ramp-volume> is used
+ramp-headphones-0 = 
+
+click-middle = 
+click-right = exec alsamixer
+
+;------------------------------------------------;
+
+
+;------------------------------------------------;
+;                                                ;
+;               	 	TITLE	                 ;
+;                                                ;
+;------------------------------------------------;
+
+[module/title]
+type = internal/xwindow
+
+; Available tags:
+;   <label> (default)
+format = <label>
+;format-prefix = ﯑
+format-background = ${color.background}
+format-foreground = ${color.foreground}
+format-padding = 1
+
+; Available tokens:
+;   %title%
+; Default: %title%
+label = " %title%"
+label-maxlen = 80
+
+; Used instead of label when there is no window title
+label-empty = ""
+label-empty-foreground = ${color.background-alt}
+
+;------------------------------------------------;
+
+
+
+;------------------------------------------------;
+;                                                ;
+;               	NETWORKING	    	         ;
+;                                                ;
+;------------------------------------------------;
+
+[module/wired-network]
+type = internal/network
+interface = eth0
+
+
+[module/wireless-network]
+type = internal/network
+interface = wlan0
+
+
+[module/network]
+type = internal/network
+interface = wlan0
+
+interval = 5.0
+
+accumulate-stats = true
+
+unknown-as-up = true
+
+label-connected = "%{A1:~/.config/i3/rofi/bin/network_menu &:}%essid%%{A}"
+label-connected-foreground = ${color.foreground}
+label-connected-background = ${color.background-alt}
+format-connected = <ramp-signal><label-connected>
+format-connected-foreground = ${color.foreground}
+foramt-connected-background = ${color.background-alt}
+
+format-disconnected = <label-disconnected>
+format-disconnected-prefix = " "
+format-disconnected-prefix-font = 2
+format-disconnected-prefix-background = ${color.background-alt}
+format-disconnected-foreground = ${color.red}
+format-disconnected-background = ${color.background-alt}
+
+ramp-signal-0 = "   "
+ramp-signal-1 = "   "
+ramp-signal-2 = "   "
+ramp-signal-3 = "   "
+ramp-signal-4 = "   "
+ramp-signal-foreground = ${color.foreground}
+ramp-signal-background = ${color.background-alt}
+ramp-signal-font = 2
+
+;------------------------------------------------;
+
+
+
+;------------------------------------------------;
+;                                                ;
+;               	BACKLIGHT 	    	         ;
+;                                                ;
+;------------------------------------------------;
+
+[module/backlight]
+type = internal/backlight
+#type = internal/xbacklight
+
+; Use the following command to list available cards:
+; $ ls -1 /sys/class/backlight/
+card = amdgpu_bl0
+#card = intel_backlight
+
+; Available tags:
+;   <label> (default)
+;   <ramp>
+;   <bar>
+format = <ramp> <label>
+
+; Available tokens:
+;   %percentage% (default)
+label = %percentage%%
+
+; Only applies if <ramp> is used
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
+ramp-5 = 
+ramp-6 = 
+ramp-7 = 
+ramp-8 = 
+ramp-9 = 
+ramp-font = 2
+ramp-foreground = ${color.CYAN}
+
+;------------------------------------------------;
+
+
+
+;------------------------------------------------;
+;                                                ;
+;               	BATTERY 	    	         ;
+;                                                ;
+;------------------------------------------------;
+
+[module/battery]
+type = internal/battery
+
+; This is useful in case the battery never reports 100% charge
+full-at = 99
+
+; Use the following command to list batteries and adapters:
+; $ ls -1 /sys/class/power_supply/
+battery = BAT1
+adapter = ACAD
+
+; If an inotify event haven't been reported in this many
+; seconds, manually poll for new values.
+;
+; Needed as a fallback for systems that don't report events
+; on sysfs/procfs.
+;
+; Disable polling by setting the interval to 0.
+;
+; Default: 5
+poll-interval = 5
+
+; see "man date" for details on how to format the time string
+; NOTE: if you want to use syntax tags here you need to use %%{...}
+; Default: %H:%M:%S
+time-format = %H:%M
+
+; Available tags:
+;   <label-charging> (default)
+;   <bar-capacity>
+;   <ramp-capacity>
+;   <animation-charging>
+format-charging = <animation-charging> <label-charging>
+format-charging-prefix = " "
+format-charging-prefix-font = 1
+format-charging-prefix-foreground = ${color.RED}
+
+; Available tags:
+;   <label-discharging> (default)
+;   <bar-capacity>
+;   <ramp-capacity>
+;   <animation-discharging>
+format-discharging = <ramp-capacity> <label-discharging>
+
+; Available tags:
+;   <label-full> (default)
+;   <bar-capacity>
+;   <ramp-capacity>
+;format-full = <ramp-capacity> <label-full>
+
+; Available tokens:
+;   %percentage% (default)
+;   %time%
+;   %consumption% (shows current charge rate in watts)
+
+label-charging = %percentage%%
+
+; Available tokens:
+;   %percentage% (default)
+;   %time%
+;   %consumption% (shows current discharge rate in watts)
+label-discharging = %percentage%%
+
+; Available tokens:
+;   %percentage% (default)
+format-full = <label-full>
+format-full-prefix = " "
+format-full-prefix-font = 2
+format-full-prefix-foreground = ${color.RED}
+label-full = %percentage%%
+
+; Only applies if <ramp-capacity> is used
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-foreground = ${color.background-alt}
+ramp-capacity-font = 2
+
+; Only applies if <animation-charging> is used
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-foreground = ${color.GREEN}
+animation-charging-font = 2
+animation-charging-framerate = 700
+
+;------------------------------------------------;
+
+ 

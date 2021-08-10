@@ -1,0 +1,26 @@
+/* Confirm Dialog */
+
+@import "colors.rasi"
+* {
+    background-color:       @black;
+    text-color:             @foreground;
+    font:                   "DejaVu Sans 9";
+    border-radius:          6;
+    opacity:                80;
+}
+window {
+    background-color:       @black;
+    width:                  225px;
+    padding:                25px;
+    border:                 1px;
+    border-radius:          6;
+    border-color:           @black;
+    location:               center;
+    y-offset:               -20px;
+    opacity:                80;
+}
+entry {
+    expand:                 true;
+    text-color:             @foreground;
+    border-radius:          6;
+}

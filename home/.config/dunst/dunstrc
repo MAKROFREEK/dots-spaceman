@@ -1,0 +1,63 @@
+[global]
+    geometry = "1900x5-25+50"
+    transparency = 8
+    shrink = yes
+    separator_height = 1
+    padding = 4
+    horizontal_padding = 20
+    corner_radius = 11
+    #enables the frame
+    frame_width = 0
+    sort = yes
+    idle_threshold = 120
+    font = DejaVu Sans Mono:pixelsize 9.5
+    line_height = 4
+    allow_markup = yes
+    markup = full
+    format = %s\n%b
+    alignment = left
+    show_age_threshold = 60
+    word_wrap = true
+    bounce_freq = 0
+    ignore_newline = true
+    stack_duplicates = true
+    hide_duplicate_count = no
+    show_indicators = yes
+    indicate_hidden = yes
+    icon_position = right
+    sticky_history = yes
+    history_length = 20
+    browser = /usr/bin/chromium -new-tab
+    always_run_script = true
+    
+    title = Dunst 
+    class = Dunst
+
+# Commenting this out will enable "stacking." 
+[stack_all]
+    set_stack_tag = "tag"
+
+[shortcuts]
+    mouse_left_click = do_action & close_current
+    mouse_middle_click = close_all
+
+separator_color = "#000"
+
+
+[low]
+    msg_urgency = low
+    background = "#363240"
+    foreground = "#dad9ce"
+    timeout = 4
+
+[normal]
+    msg_urgency = normal
+    background = "#363240"
+    foreground = "#dad9ce"
+    timeout = 6
+
+[critical]
+    msg_urgency = critical
+    background = "#363240"
+    foreground = "#f8524f"
+    timeout = 0

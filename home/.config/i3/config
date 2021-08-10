@@ -1,0 +1,275 @@
+
+set $mod Mod4
+workspace_layout default
+workspace 7 output HDMI-0
+default_border pixel 0
+default_floating_border none
+hide_edge_borders none
+font xft:DejaVuSans 10.5
+
+## AUTOSTART APPLICATIONS
+
+################# IMPORTANT ###########################
+
+# This sets up my specific set of monitors. My secondary display is detected first so naturally the system tries to make this the "Main" display automatically. You can probably just delete this line or comment it out and it would be just fine. 
+# My main display is 240hz so this makes sure that I'm getting the performance it's capable of.
+exec --no-startup-id xrandr --output DP-0 --off --output DP-1 --off --output HDMI-0 --mode 1920x1080 --pos 0x0 --above DP-2 --rotate normal --output DP-2 --primary --mode 1920x1080 --rate 239.76 --pos 0x1080 --rotate normal --output DP-3 --off --output DP-4 --off --output DP-5 --off --output USB-C-0 --off
+# feh to set the background
+exec --no-startup-id feh --bg-fill ~/Pictures/Backgrounds/spaceman-on-a-futuristic-planet-wallpaper.jpg
+# alternative to a loginDM or like a login manager
+exec ~/.config/rofi/scripts/i3lock.sh
+# picom-ibhagwan-git
+exec --no-startup-id picom -b
+# PROTECT YOUR EYES! USE REDSHIFT!
+exec --no-startup-id redshift 
+
+## OTHER
+# exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+# networking
+exec --no-startup-id nm-applet
+exec_always --no-startup-id ff-theme-util
+exec_always --no-startup-id fix_xcursor
+exec xset +fp ~/.fonts/misc/
+# opens polybar
+exec_always killall polybar; polybar main
+
+## KEY BINDINGS 
+
+floating_modifier $mod 
+bindsym $mod+y border none
+################# IMPORTANT ###########################
+# I dont like my rofi to spawn on my other monitors so I suggest using xrandr and changing to your specific monitors or just deleting -monitor flag
+bindsym $mod+c exec killall dunst; exec rofi -show calc -theme ~/.config/rofi/launcher.rasi -monitor DP-2 
+# I always forget to change the icons to the correlating theme
+bindsym $mod+d exec killall dunst; exec rofi -show drun -show-icons oomox-spaceman -theme ~/.config/rofi/launcher.rasi -monitor DP-2
+# bindsym $mod+s 
+bindsym $mod+e exec kitty -e ranger
+# file manager
+bindsym $mod+Shift+e exec thunar
+# restart dunst
+bindsym $mod+Shift+d --release exec killall dunst; exec notify-send "dunst restarted"
+# screenshot 
+bindsym $mod+Shift+p exec --no-startup-id spectacle
+# terminal 
+bindsym $mod+Return exec kitty
+# exit kill's window
+bindsym $mod+q kill
+# POWER MENU 
+bindsym $mod+0 exec ~/.config/rofi/scripts/powermenu.sh; exec ~/.config/rofi/scripts/uptime.sh; exec pkill -9 -e -f "polybar sensors";
+
+# NETWORK MENU 
+# bindsym $mod+n exec --no-startup-id ~/.config/rofi/scripts/network.sh
+
+
+# Middle click kills window, Right click toggles floating, Mod+Scroll wheel up or down adjusts height or (mod+Shift+scroll wheel) width of floating window.
+bindsym --whole-window $mod+button3 floating toggle
+bindsym --whole-window $mod+button2 kill
+
+# coarse control - resize window with mouse. scroll = up & down. shift = left & right.
+bindsym --whole-window $mod+button4             resize shrink height 20 px or 20 ppt
+bindsym --whole-window $mod+button5             resize grow height 20 px or 20 ppt 
+bindsym --whole-window $mod+Shift+button4       resize shrink width 20 px or 20 ppt
+bindsym --whole-window $mod+Shift+button5       resize grow width 20 px or 20 ppt
+# fine control  - resize window with mouse. scroll = up & down. shift = left & right.
+bindsym --whole-window $mod+Ctrl+button4             resize shrink height 5 px or 5 ppt
+bindsym --whole-window $mod+Ctrl+button5             resize grow height 5 px or 5 ppt 
+bindsym --whole-window $mod+Ctrl+Shift+button4       resize shrink width 5 px or 5 ppt
+bindsym --whole-window $mod+Ctrl+Shift+button5       resize grow width 5 px or 5 ppt
+
+# restarts i3 - this also will reload polybar
+bindsym $mod+Shift+r restart
+focus_follows_mouse yes
+
+# shrink / expand windows
+bindsym $mod+Mod1+j resize shrink width 5 px or 5 ppt
+bindsym $mod+Mod1+k resize grow height 5 px or 5 ppt
+bindsym $mod+Mod1+l resize shrink height 5 px or 5 ppt
+bindsym $mod+Mod1+semicolon resize grow width 5 px or 5 ppt
+
+# change focus
+bindsym $mod+j focus left;
+bindsym $mod+k focus down;
+bindsym $mod+l focus up;
+bindsym $mod+semicolon focus right;
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left;
+bindsym $mod+Down focus down;
+bindsym $mod+Up focus up;
+bindsym $mod+Right focus right;
+
+# move focused window
+bindsym $mod+Shift+j move left;
+bindsym $mod+Shift+k move down;
+bindsym $mod+Shift+l move up;
+bindsym $mod+Shift+semicolon move right;
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left;
+bindsym $mod+Shift+Down move down;
+bindsym $mod+Shift+Up move up;
+bindsym $mod+Shift+Right move right;
+
+# tiling options
+
+# Horizontal
+bindsym $mod+h split h; exec notify-send "冀  |  Horizontal tiling"
+# Vertical
+bindsym $mod+v split v; exec notify-send "響  |  Vertical tiling"
+# BSPWM
+bindsym $mod+b exec pkill i3-auto-layout; exec python ~/.config/i3/plugins/alternating-layout.py; exec notify-send "况  |  Bspwm tiling"
+# Fibonacci spiral
+bindsym $mod+f exec --no-startup-id ~/.config/i3/plugins/i3-auto-layout; exec notify-send "侀  |  Fibonacci spiral tiling"
+# promotes focused window to main "focus." Ex: if you have two windows, one bigger than the other, they swap size and positions. Thus "promoting" the window.
+bindsym $mod+p exec --no-startup-id python ~/.config/i3/plugins/promote-window.py; exec notify-send " | Promoted window"
+
+
+# toggle fullscreen mode for the focused container
+bindsym $mod+shift+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+F3 layout stacked
+bindsym $mod+F2 layout tabbed
+bindsym $mod+F1 layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+w floating toggle
+
+# toggle sticky
+bindsym $mod+Shift+s sticky toggle;
+
+#navigate workspaces next / previous alt
+#bindsym $mod+Ctrl+semicolon workspace next;
+#bindsym $mod+Ctrl+j workspace prev;
+
+# shrink windows
+bindsym $mod+Ctrl+Left resize shrink width 20 px or 20 ppt
+bindsym $mod+Ctrl+Down resize grow height 20 px or 20 ppt
+bindsym $mod+Ctrl+Up resize shrink height 20 px or 20 ppt
+bindsym $mod+Ctrl+Right resize grow width 20 px or 20 ppt
+
+################# IMPORTANT ###########################
+# You'll want to change to your relevant monitors. running xrandr in a terminal should get you the info you need.
+# I have certain workspaces got to certain windows. I have two monitors, so I usually just throw a movie, stream, or music up on the second monitor and use ther 6 other workspaces for actual work.  
+
+set $second HDMI-0 
+set $main DP-2
+
+# Assign workspaces to specific monitor (stacked dual monitor gang)
+
+workspace 1 output $main
+workspace 2 output $main
+workspace 3 output $main
+workspace 4 output $main
+workspace 5 output $main
+workspace 6 output $main
+workspace 7 output $second
+workspace 8 output $second
+
+# Workspace names
+set $ws1 1
+set $ws2 2
+set $ws3 3
+set $ws4 4
+set $ws5 5
+set $ws6 6
+set $ws7 7
+set $ws8 8
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+
+# Move focused container to workspace
+bindsym $mod+Ctrl+1 move container to workspace $ws1
+bindsym $mod+Ctrl+2 move container to workspace $ws2
+bindsym $mod+Ctrl+3 move container to workspace $ws3
+bindsym $mod+Ctrl+4 move container to workspace $ws4
+bindsym $mod+Ctrl+5 move container to workspace $ws5
+bindsym $mod+Ctrl+6 move container to workspace $ws6
+bindsym $mod+Ctrl+7 move container to workspace $ws7
+bindsym $mod+Ctrl+8 move container to workspace $ws8
+
+# Move to workspace with focused container
+bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2; workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3; workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4; workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5; workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
+
+# tiling rules 
+for_window [window_role="About"]                        floating enable
+for_window [window_role="pop-up"]                       floating enable
+for_window [window_role="bubble"]                       floating enable 
+for_window [window_role="task_dialog"]                  floating enable
+for_window [window_role="Preferences"]                  floating enable
+for_window [window_type="dialog"]                       floating enable 
+for_window [window_type="menu"]                         floating enable
+for_window [window_type="spectacle"]                    floating enable
+for_window [window_type="save_as"]                      floating enable
+for_window [window_type="copyq"]                        floating enable
+for_window [window_type="gcolor"]						floating enable
+
+# commenting this will disable tiling ALL windows. (kind of annoying)
+#for_window [class="[.]*"]                               floating disable
+
+# switch to workspace with urgent window automatically
+for_window [urgent=latest] focus
+
+# ASSIGN WINDOWS TO WORKSPACES
+assign [instance="chromium"] $ws2
+assign [instance="discord"] $ws6
+assign [instance="subl"] $ws1
+assign [instance="pamac-manager"] $ws3
+assign [instance="spotify"] $ws7
+
+# Only relevent for i3-gaps-rounded-git
+# border_radius 20
+
+# Set inner/outer gaps
+gaps inner 32
+gaps outer 4
+
+# Smart gaps (gaps used if only more than one container on the workspace)
+smart_gaps inverse_outer
+
+# Smart borders (draw borders around container only if it is not the only container on this workspace) 
+# on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
+smart_borders no_gaps
+
+# COLORS
+
+set $base00 #2b2833
+set $base01 #5b6660
+set $base02 #808e87
+set $base03 #958e89
+set $base04 #17141f
+set $base05 #fff4e0
+set $base06 #fff4e0
+set $base07 #fff4e0
+set $base08 #f8524f
+set $base09 #ffd089
+set $base0A #ffd089
+set $base0B #808e87
+set $base0C #fee2b4
+set $base0D #843e42
+set $base0E #f8524f
+set $base0F #e77d58
+
+# Basic color configuration using the Base16 variables for windows and borders.
+# Property Name         Border  BG      Text    Indicator Child Border
+client.focused          $base05 $base0D $base00 $base0D $base0C
+client.focused_inactive $base01 $base01 $base05 $base03 $base01
+client.unfocused        $base01 $base00 $base05 $base01 $base01
+client.urgent           $base08 $base08 $base00 $base08 $base08
+client.placeholder      $base00 $base00 $base05 $base00 $base00
+client.background       $base07

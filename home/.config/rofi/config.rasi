@@ -1,0 +1,17 @@
+configuration {
+  terminal: "kitty";
+  /*modi: "combi,window,drun,ssh,file-browser";*/
+  /*combi-modi: "drun,window";*/
+  font: "DejaVu Sans 10";
+  show-icons: true;
+  icon-theme: "Oomox-Spacegray";
+  combi-hide-mode-prefix: true;
+  /*drun-show-actions: true;*/
+  drun-display-format: "{name}";
+  disable-history: false;
+  fullscreen: false;
+  hide-scrollbar: true;
+  sidebar-mode: false;
+  auto-select: false;
+}
+@import "colors.rasi"
