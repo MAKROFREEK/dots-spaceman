@@ -39,9 +39,8 @@ Just a theme made from a color palette from a wallpaper. Enjoy.
 * Neovim
 
 
-## INSTALLATION GUIDE COMING SOON
-replace DP-2 with your monitor settings
-replace hdmi-0 with your monitor settings
+## INSTALLATION GUIDE (Still a work in progress if you have questions please ask)
+https://github.com/LetsHaveKiddos/installation-guide
 
 ## Screens:
 
