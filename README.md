@@ -39,7 +39,7 @@ Just a theme made from a color palette from a wallpaper. Enjoy.
 * Neovim
 
 
-## INSTALLATION GUIDE (Still a work in progress if you have questions please ask)
+## INSTALLATION GUIDE
 https://github.com/LetsHaveKiddos/installation-guide
 
 ## Screens:
