@@ -42,6 +42,7 @@ Just a theme made from a color palette from a wallpaper. Enjoy.
 ## INSTALLATION GUIDE
 https://github.com/LetsHaveKiddos/installation-guide
 
+
 ## Screens:
 
 ![image](screenshots/reddit-screenshots.png)
